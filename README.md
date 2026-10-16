@@ -92,13 +92,6 @@ The workflow at `.github/workflows/dotnet.yml` restores, builds, and tests the s
 3. Capture a screenshot showing the green successful run and add it here under `docs/screenshots/ci-success.png`.
 4. Replace this instruction with the actual screenshot. Do not claim a green build until GitHub has run it successfully.
 
-## Submission checklist
-- [ ] Push at least 20 meaningful commits to your own repository.
-- [ ] Confirm endpoint names and schema against the lecturer-approved Part 1 specification.
-- [ ] Run migrations and test on your SQL Server.
-- [ ] Add screenshots of Swagger endpoints, tests, and successful GitHub Actions run.
-- [ ] Record an unlisted YouTube demonstration covering code structure, endpoints, authentication/roles, and tests; add the real URL here.
-- [ ] Submit your GitHub repository URL on ARC.
 
 ## Important alignment notes
 The Part 2 model adds `EventType` (Run/Walk/Cycle) and includes event time, venue, location, and capacity fields. It uses a separate `RaceDayPart2DB` database so its EF migration does not collide with a database created directly from the Part 1 SQL script. The Part 1 endpoint table says login returns a token, so this implementation uses JWT bearer authentication rather than server-side ASP.NET session cookies. This is appropriate for a REST API and matches the Part 1 contract, but confirm the session wording with your lecturer.
