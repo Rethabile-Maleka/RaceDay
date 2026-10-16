@@ -11,7 +11,6 @@
 
 - Organizer: manages only events they created, assigns categories, views enrolments for their events, and records/updates results.
 - Participant: views events/categories, enrols in categories, views and cancels their own enrolments, and views their own results.
-- Public endpoints: 
   
 
 
