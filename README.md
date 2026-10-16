@@ -15,9 +15,5 @@
 - Protected endpoints require a bearer token. Use the token returned by login in Swagger's **Authorize** dialog.
 
 
-Unit tests
-Run:
-```bash
-dotnet test RaceDay.sln
-```
+
 
