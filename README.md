@@ -1,8 +1,6 @@
 # RaceDay System — Part 2: ASP.NET Core REST API
 
-This project continues the Part 1 RaceDay plan in `st10475807 poe part1.pdf`. It uses the same core tables and endpoint names: `Users`, `Events`, `Categories`, `EventCategories`, `Enrolments`, and `Results`.
 
-## Technology
 - ASP.NET Core Web API (.NET 8)
 - Entity Framework Core Code First + SQL Server
 - Password hashing with ASP.NET Core `PasswordHasher<TUser>`
@@ -11,42 +9,10 @@ This project continues the Part 1 RaceDay plan in `st10475807 poe part1.pdf`. It
 - xUnit tests
 - GitHub Actions build/test workflow
 
-## Roles
 - **Organizer**: manages only events they created, assigns categories, views enrolments for their events, and records/updates results.
 - **Participant**: views events/categories, enrols in categories, views and cancels their own enrolments, and views their own results.
 - Public endpoints: event and category browsing, registration and login.
 - Protected endpoints require a bearer token. Use the token returned by login in Swagger's **Authorize** dialog.
-
-## Prerequisites
-Install Visual Studio 2022 with the ASP.NET and web development workload, .NET 8 SDK, and SQL Server / LocalDB. For another SQL Server instance, update `ConnectionStrings:RaceDayConnection` in `RaceDay.Api/appsettings.json`.
-
-## Run locally (VS Code or Visual Studio)
-
-1. Install the **.NET 8 SDK** and SQL Server LocalDB (or SQL Server Express). In VS Code, open the folder that contains `RaceDay.sln`.
-2. Open a terminal at that folder and check the SDK:
-   ```powershell
-   dotnet --version
-   ```
-3. Restore packages:
-   ```powershell
-   dotnet restore .\RaceDay.sln
-   ```
-4. Install the Entity Framework command-line tool once, if it is not already installed:
-   ```powershell
-   dotnet tool install --global dotnet-ef --version 8.*
-   ```
-   If it is already installed, update it with `dotnet tool update --global dotnet-ef --version 8.*`.
-5. Create the database schema and apply it (the connection string creates a separate `RaceDayPart2DB` database to avoid conflicts with a Part 1 database):
-   ```powershell
-   dotnet ef migrations add InitialRaceDay --project .\RaceDay.Api\RaceDay.Api.csproj --startup-project .\RaceDay.Api\RaceDay.Api.csproj
-   dotnet ef database update --project .\RaceDay.Api\RaceDay.Api.csproj --startup-project .\RaceDay.Api\RaceDay.Api.csproj
-   ```
-6. Start the API:
-   ```powershell
-   dotnet run --project .\RaceDay.Api\RaceDay.Api.csproj
-   ```
-   The included launch profile sets Development mode and uses port **5080**. Open **http://localhost:5080/swagger**. The root URL redirects to Swagger. If port 5080 is already in use, change `applicationUrl` in `RaceDay.Api/Properties/launchSettings.json` to another free port and use that same port in the browser.
-7. In Swagger, register an Organizer and a Participant using `POST /api/auth/register`, then log in using `POST /api/auth/login`. Copy the `accessToken`, click **Authorize**, and paste the token. Use a Participant token for enrolment/profile actions and an Organizer token for event/category/result management.
 
 ### Database and configuration notes
 
